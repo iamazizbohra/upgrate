@@ -1,4 +1,4 @@
-const ora = require('ora').default;
+const ora = require('ora');
 
 // Create a spinner instance
 const spinner = ora('Loading...');
