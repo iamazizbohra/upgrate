@@ -2,6 +2,10 @@
 
 A simple CLI tool help you upgrade or migrate projects
 
+## Prerequisite
+
+Node >= v22.12.0
+
 ## Installation
 
 npm:
