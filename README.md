@@ -24,9 +24,29 @@ yarn global add upgrate
 Example:
 ```bash
 npx upgrate --help
+```
+```bash
 npx upgrate --package react 
+```
+```bash
 npx upgrate --package react --latest
+```
+```bash
 npx upgrate --package react --version 18.2.0
+```
+
+Format:
+```bash
+npx upgrate --help
+```
+```bash
+npx upgrate --package <package> 
+```
+```bash
+npx upgrate --package <package> --latest
+```
+```bash
+npx upgrate --package <package> --version <version>
 ```
 
 ## Usage
