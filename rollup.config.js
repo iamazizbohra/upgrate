@@ -1,9 +1,10 @@
 import { globSync } from 'glob';
 import { fileURLToPath } from 'node:url';
+import { terser } from 'rollup-plugin-terser';
 import path from 'node:path';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
-import { terser } from 'rollup-plugin-terser';
+import babel from '@rollup/plugin-babel';
 
 export default [
 	{
@@ -35,6 +36,7 @@ export default [
 		],
 		plugins: [
 			resolve(),
+			babel({ babelHelpers: 'bundled' }),
 			commonjs(), // convert CommonJS module to ES modules
 			terser() 
 		]

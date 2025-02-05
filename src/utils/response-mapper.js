@@ -17,9 +17,7 @@ function mapPackageVerions(response) {
     for (let version in versions) {
         const obj = versions[version];
 
-        let dependenciesString = objToString(obj.dependencies ? obj.dependencies : {});
-
-        enteries.push([version, obj && obj.engines && obj.engines.node, dependenciesString]);
+        enteries.push([version, (obj && obj?.engines?.node) || '', objToString(obj.dependencies ? obj.dependencies : {})]);
     }
 
     return enteries;
@@ -28,23 +26,13 @@ function mapPackageVerions(response) {
 function mapPackageDetails(response) {
     const enteries = [];
 
-    if (response.version) {
-        enteries.push(['version', response.version]);
-    }
-
+    enteries.push(['version', response?.version || '']);
     enteries.push(['name', response.name]);
     enteries.push(['description', response.description]);
     enteries.push(['homepage', response.homepage]);
     enteries.push(['repository', response.repository.url.replace(/^git\+/, '')]);
-
-    if (response.engines && response.engines.node) {
-        enteries.push(['engines', response.engines.node]);
-    }
-
-    if (response.dependencies) {
-        let dependenciesString = objToString(response.dependencies);
-        enteries.push(['dependencies', dependenciesString]);
-    }
+    enteries.push(['engines', response?.engines?.node || '']);
+    enteries.push(['dependencies', objToString(response.dependencies ? response.dependencies : {})]);
 
     return enteries;
 }
@@ -52,8 +40,8 @@ function mapPackageDetails(response) {
 function mapLatestVersion(response) {
     const enteries = [];
 
-    enteries.push(['latest', (response['dist-tags'] && response['dist-tags'].latest) ? response['dist-tags'].latest : '-']);
-    enteries.push(['next', (response['dist-tags'] && response['dist-tags'].next) ? response['dist-tags'].next : '-']);
+    enteries.push(['latest', (response['dist-tags'] && response['dist-tags']?.latest) || '']);
+    enteries.push(['next', (response['dist-tags'] && response['dist-tags']?.next) || '']);
 
     return enteries;
 }
