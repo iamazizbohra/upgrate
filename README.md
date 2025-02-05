@@ -1,5 +1,30 @@
 # upgrate
 
+A simple CLI tool help you upgrade or migrate projects
+
+## Installation
+
+npm:
+```bash
+npm install -g upgrate
+```
+
+yarn:
+```bash
+yarn global add upgrate
+```
+
+> [!TIP]
+> You can run upgrate with npx without installing the package at all
+
+Example:
+```bash
+npx upgrate --help
+npx upgrate --package react 
+npx upgrate --package react --latest
+npx upgrate --package react --version 18.2.0
+```
+
 ## Usage
 
 ### Help
