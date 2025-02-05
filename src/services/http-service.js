@@ -6,7 +6,6 @@ const httpClient = axios.create({
 });
 
 httpClient.interceptors.request.use(request => {
-
     if (process.env.LOG_REQUEST_URL === 'true') {
         const fullUrl = new URL(request.url, request.baseURL).toString();
         console.log('Request URL:', fullUrl);
