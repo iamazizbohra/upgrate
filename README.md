@@ -2,9 +2,14 @@
 
 A simple CLI tool help you upgrade or migrate projects
 
-## Prerequisite
+## Prerequisites
 
-Node >= v22.12.0
+```bash
+nvm install 22.12.0
+```
+```bash
+nvm use 22.12.0
+```
 
 ## Installation
 
