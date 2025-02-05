@@ -26,7 +26,6 @@ const isValidVersion = (value) => {
 program
     .option('-p, --package <package>', 'Package name (string)', isValidPackage)
     .option('-v, --version <version>', 'Package version (string)', isValidVersion)
-    .option('-e, --engine <version>', 'Engine version (string)', isValidVersion)
     .option('-l, --latest', 'No argument flag')
     .parse(process.argv);
 
@@ -37,7 +36,6 @@ if (options.package && options.version) {
     getPackageDetails(options.package, options.version);
 } else if (options.package && ('latest' in options)) {
     getLatestVersion(options.package);
-    console.log(options);
 } else if (options.package) {
     getPackageVersions(options.package);
 } else {
