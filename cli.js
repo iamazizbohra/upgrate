@@ -1,6 +1,10 @@
 #!/usr/bin/env node
 
-require('dotenv').config()
+const path = require('path');
+require('dotenv').config({
+    debug: process.env.DEBUG,
+    path: path.resolve(__dirname, '.env')
+});
 
 const { program } = require('commander');
 const { getPackageVersions, getPackageDetails, getLatestVersion } = require('./dist/cjs/main.js'); // Import the CommonJS bundle
