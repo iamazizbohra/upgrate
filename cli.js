@@ -26,7 +26,7 @@ const isValidVersion = (value) => {
 program
     .option('-p, --package <package>', 'Package name (string)', isValidPackage)
     .option('-v, --version <version>', 'Package version (string)', isValidVersion)
-    .option('-l, --latest', 'No argument flag')
+    .option('-l, --latest', 'No argument option')
     .parse(process.argv);
 
 // Get the parsed arguments

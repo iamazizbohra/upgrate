@@ -2,10 +2,80 @@
 
 ## Usage
 
+### Help
+
+Command:
 ```bash
-npx upgrate --package <package>
+upgrate --help
 ```
 
+Output:
+```bash
+Usage: upgrate [options]
+
+Options:
+  -p, --package <package>  Package name (string)
+  -v, --version <version>  Package version (string)
+  -l, --latest             No argument option
+  -h, --help               display help for command
+```
+
+### Get latest package
+
+Command:
+```bash
+upgrate --package react --latest
+```
+
+Output:
+```bash
+.------------------------------------------.
+| Title  |             Version             |
+|--------|---------------------------------|
+| latest | 19.0.0                          |
+| next   | 19.1.0-canary-0a82580b-20250203 |
+'------------------------------------------'
+```
+
+### Get package details
+
+Command:
+```bash
+upgrate --package react --version 18.2.0 
+```
+
+Output:
+```bash
+.----------------------------------------------------------------------------.
+|    Title     |                         Description                         |
+|--------------|-------------------------------------------------------------|
+| version      | 18.2.0                                                      |
+| name         | react                                                       |
+| description  | React is a JavaScript library for building user interfaces. |
+| homepage     | https://reactjs.org/                                        |
+| repository   | https://github.com/facebook/react.git                       |
+| engines      | >=0.10.0                                                    |
+| dependencies | loose-envify:^1.1.0                                         |
+'----------------------------------------------------------------------------'
+```
+
+### Get package versions
+
+Command:
+```bash
+upgrate --package react   
+```
+
+Output:
+```bash
+.---------------------------------------------------------------------------------------------------------------------------------------------------------.
+|    Version     |              Engine              |                                            Dependencies                                             |
+|----------------|----------------------------------|-----------------------------------------------------------------------------------------------------|
+| 30.0.0-alpha.1 | ^16.10.0 || ^18.12.0 || >=20.0.0 | jest-cli:30.0.0-alpha.1, @jest/core:30.0.0-alpha.1, @jest/types:30.0.0-alpha.1, import-local:^3.0.2 |
+| 29.7.0         | ^14.15.0 || ^16.10.0 || >=18.0.0 | jest-cli:^29.7.0, @jest/core:^29.7.0, @jest/types:^29.6.3, import-local:^3.0.2                      |
+| 29.6.4         | ^14.15.0 || ^16.10.0 || >=18.0.0 | jest-cli:^29.7.0, @jest/core:^29.7.0, @jest/types:^29.6.3, import-local:^3.0.2                      |
+'---------------------------------------------------------------------------------------------------------------------------------------------------------'
+```
 
 ## License
 

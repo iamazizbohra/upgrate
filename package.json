@@ -5,6 +5,10 @@
   "main": "dist/bundle.cjs.js",
   "module": "dist/bundle.esm.js",
   "browser": "dist/bundle.umd.js",
+  "author": {
+    "name": "Aziz Pratapgarh Wala",
+    "email": "imazizbohra@gmail.com"
+  },
   "engines": {
     "node": ">=18"
   },
@@ -17,6 +21,14 @@
   "bin": {
     "upgrate": "./cli.js"
   },
+  "dependencies": {
+    "ascii-table": "0.0.9",
+    "axios": "1.7.9",
+    "commander": "13.1.0",
+    "dotenv": "16.4.7",
+    "lodash": "4.17.21",
+    "ora": "8.2.0"
+  },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^11.0.1",
     "@rollup/plugin-node-resolve": "^7.0.0",
@@ -26,12 +38,12 @@
   "files": [
     "dist"
   ],
-  "dependencies": {
-    "ascii-table": "0.0.9",
-    "axios": "1.7.9",
-    "commander": "13.1.0",
-    "dotenv": "16.4.7",
-    "lodash": "4.17.21",
-    "ora": "8.2.0"
+  "homepage": "https://github.com/iamazizbohra/upgrate.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iamazizbohra/upgrate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/iamazizbohra/upgrate/issues"
   }
 }
