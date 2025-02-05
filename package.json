@@ -36,7 +36,8 @@
     "rollup": "^1.29.0"
   },
   "files": [
-    "dist"
+    "dist",
+    ".env"
   ],
   "homepage": "https://github.com/iamazizbohra/upgrate.git",
   "repository": {
