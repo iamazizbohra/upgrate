@@ -1,5 +1,15 @@
 const _ = require('lodash');
 
+/**
+ * Transform the object to a comma-separated string.
+ *
+ * This function takes an object and a seperator.
+ *
+ * @param {object} obj - The object to transform.
+ * @param {string} seperator - Separator to use when concatenating.
+ * @returns {string} A comma separated string.
+ * @throws {TypeError} Throws an error.
+ */
 function objToString(obj, seperator = ':') {
     let formatedString = '';
 
@@ -10,6 +20,15 @@ function objToString(obj, seperator = ':') {
     return formatedString.slice(0, -2);
 }
 
+/**
+ * Transform raw http response to an array.
+ *
+ * This function takes a raw http response and transform it into an array.
+ *
+ * @param {object} response - The raw http response.
+ * @returns {array[][]} An array of arrays containing the package version, node version, and list of dependencies.
+ * @throws {TypeError} Throws an error.
+ */
 function mapPackageVerions(response) {
     const enteries = [];
 
@@ -23,6 +42,15 @@ function mapPackageVerions(response) {
     return enteries;
 }
 
+/**
+ * Transform raw http response to an array.
+ *
+ * This function takes a raw http response and transform it into an array.
+ *
+ * @param {object} response - The raw http response.
+ * @returns {array[][]} An array of arrays containing the details of package.
+ * @throws {TypeError} Throws an error.
+ */
 function mapPackageDetails(response) {
     const enteries = [];
 
@@ -37,6 +65,15 @@ function mapPackageDetails(response) {
     return enteries;
 }
 
+/**
+ * Transform raw http response to an array.
+ *
+ * This function takes a raw http response and transform it into an array.
+ *
+ * @param {object} response - The raw http response.
+ * @returns {array[][]} An array of arrays containing the latest and next versions of package.
+ * @throws {TypeError} Throws an error.
+ */
 function mapLatestVersion(response) {
     const enteries = [];
 

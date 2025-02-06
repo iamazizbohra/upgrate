@@ -2,6 +2,7 @@ const packageService = require('./services/package-service');
 const spinnerService = require('./services/spinner-service');
 const cliTableService = require('./services/cli-table-service');
 const responseMapper = require('./utils/response-mapper');
+const filterService = require('./services/filter-service');
 
 async function getPackageVersions(packageName) {
 	try {
@@ -16,7 +17,8 @@ async function getPackageVersions(packageName) {
 		cliTableService.render(['Version', 'Engine', 'Dependencies'], enteries);
 	} catch (error) {
 		spinnerService.stop();
-		console.error(error);
+
+		throw new Error(error.message, { cause: error });
 	} finally {
 		spinnerService.stop();
 	}
@@ -35,13 +37,14 @@ async function getPackageDetails(packageName, version) {
 		cliTableService.render(['Title', 'Description'], enteries);
 	} catch (error) {
 		spinnerService.stop();
-		console.error(error);
+
+		throw new Error(error.message, { cause: error });
 	} finally {
 		spinnerService.stop();
 	}
 }
 
-async function getLatestVersion(packageName, version) {
+async function getLatestVersion(packageName) {
 	try {
 		spinnerService.start();
 
@@ -54,10 +57,56 @@ async function getLatestVersion(packageName, version) {
 		cliTableService.render(['Title', 'Version'], enteries);
 	} catch (error) {
 		spinnerService.stop();
-		console.error(error);
+
+		throw new Error(error.message, { cause: error });
 	} finally {
 		spinnerService.stop();
 	}
 }
 
-export { getPackageVersions, getPackageDetails, getLatestVersion };
+async function getCompatibleVersions(packageName, version) {
+	try {
+		spinnerService.start();
+
+		const response = await packageService.getPackageVersions(packageName);
+
+		const enteries = responseMapper.mapPackageVerions(response);
+
+		const filteredEnteries = filterService.filterCompatibleVersions(enteries, version);
+
+		spinnerService.stop();
+
+		cliTableService.render(['Version', 'Engine', 'Dependencies'], filteredEnteries);
+	} catch (error) {
+		spinnerService.stop();
+
+		throw new Error(error.message, { cause: error });
+	} finally {
+		spinnerService.stop();
+	}
+}
+
+async function getCompatibleReleaseVersions(packageName, version) {
+	try {
+		spinnerService.start();
+
+		const response = await packageService.getPackageVersions(packageName);
+
+		const enteries = responseMapper.mapPackageVerions(response);
+
+		let filteredEnteries = filterService.filterCompatibleVersions(enteries, version);
+		filteredEnteries = filterService.filterReleaseVersions(enteries);
+
+		spinnerService.stop();
+
+		cliTableService.render(['Version', 'Engine', 'Dependencies'], filteredEnteries);
+	} catch (error) {
+		spinnerService.stop();
+
+		throw new Error(error.message, { cause: error });
+	} finally {
+		spinnerService.stop();
+	}
+}
+
+export { getPackageVersions, getPackageDetails, getLatestVersion, getCompatibleVersions, getCompatibleReleaseVersions };
