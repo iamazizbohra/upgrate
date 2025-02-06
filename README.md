@@ -72,7 +72,7 @@ npx upgrate --package <package> --node <version> --release
 
 Command:
 ```bash
-upgrate --help
+npx upgrate --help
 ```
 
 Output:
@@ -92,7 +92,7 @@ Options:
 
 Command:
 ```bash
-upgrate --package jest --latest
+npx upgrate --package jest --latest
 ```
 
 Output:
@@ -109,7 +109,7 @@ Output:
 
 Command:
 ```bash
-upgrate --package jest --version 29.7.0
+npx upgrate --package jest --version 29.7.0
 ```
 
 Output:
@@ -131,7 +131,7 @@ Output:
 
 Command:
 ```bash
-upgrate --package jest   
+npx upgrate --package jest   
 ```
 
 Output:
@@ -174,7 +174,7 @@ Output:
 
 Command:
 ```bash
-upgrate --package jest --node 22.12.0 
+npx upgrate --package jest --node 22.12.0 
 ```
 
 Output:
@@ -203,7 +203,7 @@ Output:
 
 Command:
 ```bash
-upgrate --package jest --node 22.12.0 --release
+npx upgrate --package jest --node 22.12.0 --release
 ```
 
 Output:
