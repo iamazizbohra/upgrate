@@ -16,4 +16,14 @@ httpClient.interceptors.request.use(request => {
     return Promise.reject(error);
 });
 
+httpClient.interceptors.response.use(response => {
+    return response;
+}, error => {
+    if (error.response && error.response.status === 404) {
+        return Promise.reject(new Error('The requested resource was not found (404).', { cause: error.response.data }));
+    }
+
+    return Promise.reject(error);
+});
+
 export default httpClient;

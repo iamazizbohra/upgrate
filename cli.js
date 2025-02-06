@@ -31,30 +31,41 @@ const isValidVersion = (value) => {
     return value;
 };
 
-// Define command-line arguments and their validation
-program
-    .option('-p, --package <package>', 'Package name (string)', isValidPackage)
-    .option('-v, --version <version>', 'Package version (string)', isValidVersion)
-    .option('-n, --node <version>', 'Node version (string)', isValidVersion)
-    .option('-l, --latest', 'No argument option')
-    .option('-r, --release', 'No argument option')
-    .parse(process.argv);
+try {
+    // Define command-line arguments and their validation
+    program
+        .option('-p, --package <package>', 'Package name (string)', isValidPackage)
+        .option('-v, --version <version>', 'Package version (string)', isValidVersion)
+        .option('-n, --node <version>', 'Node version (string)', isValidVersion)
+        .option('-l, --latest', 'No argument option')
+        .option('-r, --release', 'No argument option')
+        .parse(process.argv);
 
-// Get the parsed arguments
-const options = program.opts();
+    // Get the parsed arguments
+    const options = program.opts();
 
-if (options.package) {
-    if (options.version) {
-        getPackageDetails(options.package, options.version);
-    } else if (options.node && 'release' in options) {
-        getCompatibleReleaseVersions(options.package, options.node);
-    } else if (options.node) {
-        getCompatibleVersions(options.package, options.node);
-    } else if ('latest' in options) {
-        getLatestVersion(options.package);
+    if (options.package) {
+        if (options.version) {
+            getPackageDetails(options.package, options.version);
+        } else if (options.node && 'release' in options) {
+            getCompatibleReleaseVersions(options.package, options.node);
+        } else if (options.node) {
+            getCompatibleVersions(options.package, options.node);
+        } else if ('latest' in options) {
+            getLatestVersion(options.package);
+        } else {
+            getPackageVersions(options.package);
+        }
     } else {
-        getPackageVersions(options.package);
+        program.help(); // Show help if missing 'package' argument
     }
-} else {
-    program.help(); // Show help if missing 'package' argument
+} catch (error) {
+    console.error(error.message);
+    process.exit(1); // Exit with error status
 }
+
+// This is a global event in Node.js that is emitted when a promise rejection occurs but is not handled by a .catch() or async/await error handler. 
+process.on('unhandledRejection', (reason, promise) => {
+    console.error(reason.message);
+    process.exit(1); // Exit with error status
+});

@@ -16,11 +16,7 @@ async function getPackageVersions(packageName) {
 
 		cliTableService.render(['Version', 'Engine', 'Dependencies'], enteries);
 	} catch (error) {
-		spinnerService.stop();
-
-		throw new Error(error.message, { cause: error });
-	} finally {
-		spinnerService.stop();
+		spinnerService.fail(error.message);
 	}
 }
 
@@ -36,11 +32,7 @@ async function getPackageDetails(packageName, version) {
 
 		cliTableService.render(['Title', 'Description'], enteries);
 	} catch (error) {
-		spinnerService.stop();
-
-		throw new Error(error.message, { cause: error });
-	} finally {
-		spinnerService.stop();
+		spinnerService.fail(error.message);
 	}
 }
 
@@ -56,11 +48,7 @@ async function getLatestVersion(packageName) {
 
 		cliTableService.render(['Title', 'Version'], enteries);
 	} catch (error) {
-		spinnerService.stop();
-
-		throw new Error(error.message, { cause: error });
-	} finally {
-		spinnerService.stop();
+		spinnerService.fail(error.message);
 	}
 }
 
@@ -78,11 +66,7 @@ async function getCompatibleVersions(packageName, version) {
 
 		cliTableService.render(['Version', 'Engine', 'Dependencies'], filteredEnteries);
 	} catch (error) {
-		spinnerService.stop();
-
-		throw new Error(error.message, { cause: error });
-	} finally {
-		spinnerService.stop();
+		spinnerService.fail(error.message);
 	}
 }
 
@@ -101,11 +85,7 @@ async function getCompatibleReleaseVersions(packageName, version) {
 
 		cliTableService.render(['Version', 'Engine', 'Dependencies'], filteredEnteries);
 	} catch (error) {
-		spinnerService.stop();
-
-		throw new Error(error.message, { cause: error });
-	} finally {
-		spinnerService.stop();
+		spinnerService.fail(error.message);
 	}
 }
 
