@@ -1,6 +1,6 @@
 {
   "name": "upgrate",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A simple CLI tool help you upgrade or migrate projects",
   "main": "dist/bundle.cjs.js",
   "module": "dist/bundle.esm.js",
